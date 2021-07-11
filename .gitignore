@@ -31,7 +31,7 @@ dofKeyStore.properties
 **/.idea/tasks.xml
 **/.idea/workspace.xml
 **/.vs
-
+**/.idea/*
 
 client/scripts/unity/automate_build_run.scpt
 client/scripts/unity/automate_rebuild_run.scpt
