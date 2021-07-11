@@ -268,7 +268,7 @@ namespace Gram.Rpg.Client.Core.Threading
                 }
                 catch (Exception e)
                 {
-                    rethrowError ??= e;
+                    rethrowError = rethrowError ?? e;
                 }
 
                 if (rethrowError == null)

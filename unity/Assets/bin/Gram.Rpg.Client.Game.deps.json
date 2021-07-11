@@ -7,13 +7,13 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "Gram.Rpg.Client.Infrastructure/1.0.0": {
+      "Gram.Rpg.Client.Game/1.0.0": {
         "dependencies": {
           "Gram.Rpg.Client.Core": "1.0.0",
           "NETStandard.Library": "2.0.3"
         },
         "runtime": {
-          "Gram.Rpg.Client.Infrastructure.dll": {}
+          "Gram.Rpg.Client.Game.dll": {}
         }
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},
@@ -30,7 +30,7 @@
     }
   },
   "libraries": {
-    "Gram.Rpg.Client.Infrastructure/1.0.0": {
+    "Gram.Rpg.Client.Game/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
