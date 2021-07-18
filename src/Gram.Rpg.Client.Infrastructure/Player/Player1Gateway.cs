@@ -1,3 +1,4 @@
+using System;
 using Gram.Rpg.Client.Core;
 using Gram.Rpg.Client.Domain.Entities;
 using Gram.Rpg.Client.Infrastructure.Dtos;
@@ -26,13 +27,25 @@ namespace Gram.Rpg.Client.Infrastructure.Player
 
             if (playerDto == null)
             {
-                var player = new Player1();
-                localStore.SetObject(playerKey,
-                    _player1Mapper.ToDto(player));
-                return player;
+                G.LogWarning($"No player record found in local history");
+                return null;
             }
 
             return _player1Mapper.FromDto(playerDto);
+        }
+
+        public void SavePlayer(IPlayer1 player1)
+        {
+            try
+            {
+                localStore.SetObject(playerKey,
+                    _player1Mapper.ToDto(player1));
+            }
+            catch (Exception e)
+            {
+                G.LogError(e);
+                throw new ApplicationException($"Failed to save player to local storage.{e}");
+            }
         }
     }
 }

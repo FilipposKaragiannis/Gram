@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace Gram.Rpg.Client.Domain.Entities
@@ -12,16 +11,10 @@ namespace Gram.Rpg.Client.Domain.Entities
 
     public class Player1 : IPlayer1
     {
-        public Player1()
+        public Player1(string id, IEnumerable<OwnedHero> initialHeroes)
         {
-            Id            = Guid.NewGuid().ToString();
-            HeroInventory = new HeroInventory(new Dictionary<string, OwnedHero>()
-            {
-                {"hero1", new OwnedHero("HRO01", "Lion", 100, 20, 0,0)},
-                {"hero2", new OwnedHero("HRO02", "Lina", 30, 110, 0,0)},
-                {"hero3", new OwnedHero("HRO03", "Tide", 40, 110, 21,10)},
-                
-            });
+            Id            = id;
+            HeroInventory = new HeroInventory(initialHeroes);
             PlayerStats   = new PlayerStats();
         }
 

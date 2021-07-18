@@ -18,6 +18,11 @@ namespace Gram.Rpg.Client.Domain.Entities
     {
         private readonly Dictionary<string, OwnedHero> _ownedHeroes;
 
+        public HeroInventory(IEnumerable<OwnedHero> heroes)
+        {
+            _ownedHeroes = heroes.ToDictionary(s => s.Id, s => s);
+        }
+
         public HeroInventory(Dictionary<string, OwnedHero> ownedHeroes = null)
         {
             _ownedHeroes = ownedHeroes ?? new Dictionary<string, OwnedHero>();
