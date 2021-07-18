@@ -3,6 +3,8 @@ using Gram.Rpg.Client.Application.Providers;
 using Gram.Rpg.Client.Application.Repos;
 using Gram.Rpg.Client.Application.UseCases;
 using Gram.Rpg.Client.Application.UseCases.AppStarts;
+using Gram.Rpg.Client.Application.UseCases.PlayerPlaysBattle.PlayerLosesBattleUseCase;
+using Gram.Rpg.Client.Application.UseCases.PlayerPlaysBattle.PlayerWinsBattleUseCase;
 using Gram.Rpg.Client.Core;
 using Gram.Rpg.Client.Core.IOC;
 
@@ -14,40 +16,24 @@ namespace Gram.Rpg.Client.Application
         {
         }
 
+        [Singleton] private IHeroRepo HeroRepo() => new HeroRepo(Repos.HeroRepo.GetData());
 
-        [Singleton] private IHeroRepo HeroRepo()
-        {
-            return new HeroRepo(Repos.HeroRepo.GetData());
-        }
+        [Instance] private IAppStarts IAppStarts() => new AppStarts(Disposer);
 
-        [Instance] private IAppStarts IAppStarts()
-        {
-            return new AppStarts(Disposer);
-        }
+        [Instance] private IAppRequestsStateOfTheWorld IAppRequestsStateOfTheWorld() => Instantiate<AppRequestsStateOfTheWorld>();
 
-        [Instance] private IAppRequestsStateOfTheWorld IAppRequestsStateOfTheWorld()
-        {
-            return Instantiate<AppRequestsStateOfTheWorld>();
-        }
+        [Singleton] private IPlayer1Provider IPlayer1Provider() => Resolver.Get<Player1Provider>();
 
-        [Singleton] private IPlayer1Provider IPlayer1Provider()
-        {
-            return Resolver.Get<Player1Provider>();
-        }
+        [Singleton] private INewPlayerFactory INewPlayerFactory() => Instantiate<NewPlayerFactory>();
 
-        [Singleton] private INewPlayerFactory INewPlayerFactory()
-        {
-            return Instantiate<NewPlayerFactory>();
-        }
+        [Singleton] private IPlayer1Store IPlayer1Store() => Resolver.Get<Player1Provider>();
 
-        [Singleton] private IPlayer1Store IPlayer1Store()
-        {
-            return Resolver.Get<Player1Provider>();
-        }
+        [Singleton] private Player1Provider Player1Provider() => Instantiate<Player1Provider>();
 
-        [Singleton] private Player1Provider Player1Provider()
-        {
-            return Instantiate<Player1Provider>();
-        }
+        [Singleton] private IPlayerWinsBattle IPlayerWinsBattle() => Instantiate<PlayerWinsBattle>();
+
+        [Singleton] private PlayerLossesBattle PlayerLossesBattle() => Instantiate<PlayerLossesBattle>();
+
+        [Singleton] private IHeroAllocator IHeroAllocator() => Instantiate<HeroAllocator>();
     }
 }

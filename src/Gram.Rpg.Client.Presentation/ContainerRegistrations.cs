@@ -15,34 +15,21 @@ namespace Gram.Rpg.Client.Presentation
         {
         }
 
-        [Singleton]
-        private IMessageBus IMessageBus() => new MessageBus(new DedicatedEventHandlers());
+        [Singleton] private IMessageBus IMessageBus() => new MessageBus(new DedicatedEventHandlers());
+
+        [Singleton] private IGuiCamera IGuiCamera() => GuiCamera.Create();
+
+        [Singleton] private ICanvas ICanvas() => Canvas.Create();
 
         [Singleton]
-        private IGuiCamera IGuiCamera()
-        {
-            return GuiCamera.Create();
-        }
-        
-        [Singleton]
-        private ICanvas ICanvas()
-        {
-            return Canvas.Create();
-        }
-        
-        [Singleton]
-        IInput IInput()
+        private IInput IInput()
         {
             if (UnityEngine.Application.isEditor)
                 return new MouseInput();
 
             return new TouchInput();
         }
-        
-        [Singleton]
-        private IInputDispatcher IInputDispatcher()
-        {
-            return Instantiate<InputDispatcher>();
-        }
+
+        [Singleton] private IInputDispatcher IInputDispatcher() => Instantiate<InputDispatcher>();
     }
 }
