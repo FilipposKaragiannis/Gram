@@ -8,8 +8,9 @@ namespace Gram.Rpg.Client.Presentation.Input
 {
     public interface IInputDispatcher
     {
-        void AddDetector(IDisposer      disposer, string name, IInputDetector detector);
-        void AddReceiver(IInputReceiver receiver);
+        void AddDetector(IDisposer          disposer, string name, IInputDetector detector);
+        void AddReceiver(IInputReceiver     receiver);
+        void RemoveReceiver(IInputReceiver  receiver);
     }
 
     public class InputDispatcher : IInputDispatcher
