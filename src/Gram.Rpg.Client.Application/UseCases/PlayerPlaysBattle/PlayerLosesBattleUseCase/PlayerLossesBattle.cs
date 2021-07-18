@@ -1,4 +1,5 @@
 using System.Linq;
+using Gram.Rpg.Client.Application.Exceptions;
 using Gram.Rpg.Client.Application.Providers;
 using Gram.Rpg.Client.Core.IOC;
 using Gram.Rpg.Client.Domain.Entities.Summaries;
@@ -21,6 +22,11 @@ namespace Gram.Rpg.Client.Application.UseCases.PlayerPlaysBattle.PlayerLosesBatt
         {
             var p1 = Player1Provider.Get();
 
+            var usedHeroes = args.BattleHeroes;
+
+            if (usedHeroes.Any(s => s.RemainingHealth > 0))
+                throw new AliveHeroException();
+            
             var statsSummary = p1.PlayerStats.PlayerLost(args.BattleHeroes.Select(s => s.Id));
 
             var heroReward = p1.TryAwardHero(HeroAllocator);

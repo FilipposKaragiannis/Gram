@@ -27,7 +27,7 @@ namespace Gram.Rpg.Client.Domain.Entities
         }
 
         public int TotalWins    => _historicEntries.Count(s => s.IsWin);
-        public int TotalLosses  => _historicEntries.Count(s => s.IsWin);
+        public int TotalLosses  => _historicEntries.Count(s => s.IsLoss);
         public int TotalBattles => TotalWins + TotalLosses;
 
         public PlayerStatsSummary PlayerWon(IEnumerable<string> heroIds)

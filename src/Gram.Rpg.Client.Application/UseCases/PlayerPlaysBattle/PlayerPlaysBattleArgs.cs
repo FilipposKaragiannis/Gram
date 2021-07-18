@@ -2,9 +2,15 @@ using Gram.Rpg.Client.Domain.Values;
 
 namespace Gram.Rpg.Client.Application.UseCases.PlayerPlaysBattle
 {
-    public class PlayerPlaysBattleArgs
+    public abstract class PlayerPlaysBattleArgs
     {
-        public MatchResult  MatchResult  { get; set; }
-        public BattleHero[] BattleHeroes { get; set; }
+        protected PlayerPlaysBattleArgs(MatchResult matchResult, BattleHero[] battleHeroes)
+        {
+            MatchResult       = matchResult;
+            BattleHeroes = battleHeroes;
+        }
+
+        public MatchResult  MatchResult  { get; }
+        public BattleHero[] BattleHeroes { get; }
     }
 }

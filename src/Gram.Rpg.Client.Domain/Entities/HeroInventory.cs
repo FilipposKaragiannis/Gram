@@ -52,7 +52,7 @@ namespace Gram.Rpg.Client.Domain.Entities
                 return;
             }
 
-            _ownedHeroes[hero.Name] = new OwnedHero(hero);
+            _ownedHeroes[hero.Id] = new OwnedHero(hero);
         }
 
         public bool Has(string id)

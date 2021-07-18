@@ -11,6 +11,13 @@ namespace Gram.Rpg.Client.Domain.Entities
 
     public class Player1 : IPlayer1
     {
+        public Player1(string id)
+        {
+            Id            = id;
+            HeroInventory = new HeroInventory();
+            PlayerStats   = new PlayerStats();
+        }
+        
         public Player1(string id, IEnumerable<OwnedHero> initialHeroes)
         {
             Id            = id;

@@ -27,7 +27,7 @@ namespace Gram.Rpg.Client.Application.UseCases.PlayerPlaysBattle.PlayerWinsBattl
             var heroesToUpgrade = args.BattleHeroes.Where(s => s.RemainingHealth > 0).ToArray();
 
             if (heroesToUpgrade == null || heroesToUpgrade.Length == 0)
-                throw new GApplicationException("THere should be alive heroes on a win result");
+                throw new NoAliveHeroesException();
 
             var inventory = p1.HeroInventory;
 
@@ -37,7 +37,7 @@ namespace Gram.Rpg.Client.Application.UseCases.PlayerPlaysBattle.PlayerWinsBattl
             {
                 var heroId = hero.Id;
                 if (!inventory.Has(heroId))
-                    throw new GApplicationException("Alive hero Id was not present on Player inventory");
+                    throw new MissingHeroException("THere should be alive heroes on a win result");
 
                 var playerHero         = p1.HeroInventory[heroId];
                 var heroUpgradeSummary = new HeroUpgradeSummary(heroId);
