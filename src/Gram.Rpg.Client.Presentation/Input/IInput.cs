@@ -1,14 +1,12 @@
-using Gram.Rpg.Client.Core;
+using UnityEngine;
 
 namespace Gram.Rpg.Client.Presentation.Input
 {
-    public class IInput
+    public interface IInput
     {
-        bool     Detected           { get; }
-        bool     Released           { get; }
-        bool     SecondaryDetected  { get; }
-        bool     SecondarySustained { get; }
-        bool     Sustained          { get; }
-        GVector3 Vector             { get; }
+        bool    Detected           { get; }
+        bool    Released           { get; }
+        bool    Sustained          { get; }
+        Vector3 Vector             { get; }
     }
 }

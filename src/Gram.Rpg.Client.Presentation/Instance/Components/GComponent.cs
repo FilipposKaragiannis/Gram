@@ -79,7 +79,7 @@ namespace Gram.Rpg.Client.Presentation.Instance.Components
         }
     }
     
-    public static class YComponentExtensions
+    public static class GComponentExtensions
     {
         public static bool StillExists(this IGComponent component)
         {

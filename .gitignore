@@ -37,6 +37,7 @@ client/scripts/unity/automate_build_run.scpt
 client/scripts/unity/automate_rebuild_run.scpt
 client/scripts/unity/bringAllUnityToFront.scpt
 
+unity/Assets/bin/*
 unity/.gradle
 unity.userprefs
 unity/Assembly-CSharp-Editor.csproj
