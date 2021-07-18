@@ -12,4 +12,6 @@ mkdir "$deployPath"
 
 find "$pubPath" -type f  \( -iname "Gram.Rpg.*" ! -iname ".deps.json" \) -exec cp "{}" "$deployPath" \;
 
+find "$pubPath" -type f  \( -iname "Newtonsoft*" \) -exec cp "{}" "$deployPath" \;
+
 echo "Finished!!"

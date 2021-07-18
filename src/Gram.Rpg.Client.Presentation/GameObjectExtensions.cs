@@ -44,7 +44,7 @@ namespace Gram.Rpg.Client.Presentation
 
         internal static void StopDefaultAnimation(this GameObject go)
         {
-            var anim = go.GetComponent<UnityEngine.Animation>();
+            var anim = go.GetComponent<Animation>();
 
             if (anim != null)
                 anim.Stop();

@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Gram.Rpg.Client.Core\Gram.Rpg.Client.Core.csproj" />
+    <ProjectReference Include="..\Gram.Rpg.Client.Domain\Gram.Rpg.Client.Domain.csproj" />
+    <ProjectReference Include="..\Gram.Rpg.Client.Infrastructure\Gram.Rpg.Client.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

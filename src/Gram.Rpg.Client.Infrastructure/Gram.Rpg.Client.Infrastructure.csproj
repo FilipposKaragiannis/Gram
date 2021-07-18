@@ -6,6 +6,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Gram.Rpg.Client.Core\Gram.Rpg.Client.Core.csproj" />
+    <ProjectReference Include="..\Gram.Rpg.Client.Domain\Gram.Rpg.Client.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\ext\unity\UnityEngine.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

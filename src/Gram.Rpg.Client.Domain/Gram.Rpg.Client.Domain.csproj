@@ -4,4 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Gram.Rpg.Client.Core\Gram.Rpg.Client.Core.csproj" />
+  </ItemGroup>
+
 </Project>
