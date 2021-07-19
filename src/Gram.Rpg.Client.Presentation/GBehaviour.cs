@@ -36,8 +36,8 @@ namespace Gram.Rpg.Client.Presentation
             add => disposer.Disposing += value;
             remove => disposer.Disposing -= value;
         }
-
-        [PublicAPI] public bool Paused { get; private set; }
+        
+        public bool Paused { get; private set; }
 
         public bool StillExists => !Disposed;
 
@@ -70,7 +70,6 @@ namespace Gram.Rpg.Client.Presentation
             return disposer.Add(action);
         }
 
-        [PublicAPI]
         protected void DisposeOf(params IDisposable[] disposables)
         {
             disposables.ForEach(d => d?.Dispose());

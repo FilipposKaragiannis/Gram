@@ -1,5 +1,4 @@
 ﻿using System;
-using Gram.Rpg.Client.Core.Design;
 
 namespace Gram.Rpg.Client.Core
 {
@@ -20,11 +19,7 @@ namespace Gram.Rpg.Client.Core
             remove => disposing -= value;
         }
 
-        [PublicAPI]
         public bool IsDisposed { get; private set; }
-
-        [PublicAPI]
-        public bool NotDisposed => !IsDisposed;
 
         public void Dispose()
         {
@@ -41,15 +36,6 @@ namespace Gram.Rpg.Client.Core
             disposing?.Invoke();
 
             OnDispose();
-        }
-
-        protected void DisposeAndSetNull(ref IDisposable disposable)
-        {
-            if (disposable == null)
-                return;
-
-            disposable.Dispose();
-            disposable = null;
         }
 
         protected virtual void OnDispose()

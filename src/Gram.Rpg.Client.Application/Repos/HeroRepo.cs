@@ -7,7 +7,7 @@ using Gram.Rpg.Client.Domain.Values;
 
 namespace Gram.Rpg.Client.Application.Repos
 {
-    public interface IHeroRepo : IReadonlyRepo<IHero>
+    public interface IHeroRepo : IEnumerable<IHero>
     {
         IHero              GetRandomHero();
         IEnumerable<IHero> GetRandomHeroes(int num);

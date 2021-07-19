@@ -179,7 +179,6 @@ namespace Gram.Rpg.Client.Core.IOC
                 return success;
             }
 
-
             private Scope CurrentScope => scopes.Peek();
 
             private Scope BeginScope(IReadOnlyDictionary<Type, Func<object>> creators, string name)

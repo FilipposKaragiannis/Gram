@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Gram.Rpg.Client.Presentation.Gui;
 using Gram.Rpg.Client.Presentation.Instance;
 using UnityEngine;
 using UPhysics = UnityEngine.Physics;

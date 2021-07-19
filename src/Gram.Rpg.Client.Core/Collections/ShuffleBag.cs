@@ -4,14 +4,12 @@ using System.Linq;
 
 namespace Gram.Rpg.Client.Core.Collections
 {
-    public interface IShuffleBag<out T>
+    public interface IShuffleBag
     {
-        bool IsEmpty { get; }
-        T    Next();
     }
 
 
-    public class ShuffleBag<T> : IEnumerable<T>, IShuffleBag<T>
+    public class ShuffleBag<T> : IEnumerable<T>, IShuffleBag
     {
         private readonly IList<T> bag;
         private          int      currentIndex;
@@ -25,18 +23,7 @@ namespace Gram.Rpg.Client.Core.Collections
             currentIndex = Count - 1;
         }
 
-        public ShuffleBag(params T[] items)
-        {
-            bag = items.ToList();
-
-            Count = bag.Count;
-
-            currentIndex = Count - 1;
-        }
-
-        public int Count { get; }
-
-        public bool IsEmpty => Count == 0;
+        private int Count { get; }
 
         public IEnumerator<T> GetEnumerator()
         {
@@ -50,7 +37,7 @@ namespace Gram.Rpg.Client.Core.Collections
                 currentIndex = Count - 1;
 
                 return currentIndex < 0
-                    ? default(T)
+                    ? default
                     : bag[0];
             }
 

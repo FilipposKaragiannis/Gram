@@ -17,8 +17,6 @@ namespace Gram.Rpg.Client.Presentation
         {
             disposer = new Disposer();
 
-            globalTimeSource = gameObject.AddComponent<TimeSource>();
-
             Initialise();
 
             OnInitialised();

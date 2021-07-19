@@ -60,13 +60,11 @@ namespace Gram.Rpg.Client.Infrastructure.LocalStorage
 
         private void Log(string action, string key, object value = null)
         {
-#if DEBUG
             if (key == null)
                 return;
             
             if (!key.StartsWith("_"))
                 return;
-#endif
 
             try
             {

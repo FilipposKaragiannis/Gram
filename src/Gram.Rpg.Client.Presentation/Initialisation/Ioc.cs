@@ -6,11 +6,9 @@ namespace Gram.Rpg.Client.Presentation.Initialisation
     public class Ioc : InitialisableBase
     {
         private readonly Container   container;
-        private readonly ITimeSource globalTimeSource;
 
-        public Ioc(ITimeSource timeSource, out Container container)
+        public Ioc(out Container container)
         {
-            globalTimeSource = timeSource;
 
             container = new Container();
 
@@ -19,8 +17,6 @@ namespace Gram.Rpg.Client.Presentation.Initialisation
 
         protected override void Initialise()
         {
-            container.RegisterSingleton(globalTimeSource);
-
             container.Register(new Application.ContainerRegistrations(Disposer),
                 new Client.Infrastructure.ContainerRegistrations(Disposer),
                 new Game.ContainerRegistrations(Disposer),

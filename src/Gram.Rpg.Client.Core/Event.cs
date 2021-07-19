@@ -1,10 +1,8 @@
 using System;
-using Gram.Rpg.Client.Core.Design;
 using Gram.Rpg.Client.Core.Extensions;
 
 namespace Gram.Rpg.Client.Core
 {
-    [PublicAPI]
     public interface IEvent : IDisposable
     {
         int  Count { get; }
@@ -109,7 +107,6 @@ namespace Gram.Rpg.Client.Core
                 Clear();
         }
 
-        [PublicAPI]
         public void Clear()
         {
             handlers     = null;
