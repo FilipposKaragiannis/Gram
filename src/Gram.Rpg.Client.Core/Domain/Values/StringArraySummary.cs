@@ -5,7 +5,6 @@ namespace Gram.Rpg.Client.Core.Domain.Values
     public interface IStringArraySummary : ISummary
     {
         string[] Delta     { get; }
-        bool     HasChange { get; }
         string[] New       { get; }
         string[] Old       { get; }
     }

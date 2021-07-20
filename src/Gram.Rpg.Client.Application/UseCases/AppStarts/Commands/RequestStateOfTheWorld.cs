@@ -1,7 +1,6 @@
 using System;
 using Gram.Rpg.Client.Core;
 using Gram.Rpg.Client.Core.IOC;
-using Gram.Rpg.Client.Core.Threading;
 
 namespace Gram.Rpg.Client.Application.UseCases.AppStarts.Commands
 {
@@ -16,14 +15,11 @@ namespace Gram.Rpg.Client.Application.UseCases.AppStarts.Commands
 
         public void Execute(IAppStartsCallbacks callbacks)
         {
-            var tcs = new YTaskCompletionSource();
-
              void TryRequestSotw()
             {
                 try
                 {
                     AppRequestsSotw.Execute();
-                    tcs.SetResult();
                 }
                 catch (Exception e)
                 {

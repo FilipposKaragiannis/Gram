@@ -21,7 +21,7 @@ namespace Gram.Rpg.Client.Core.Domain.Values
         public bool HasChange => Delta != 0;
 
         public int Delta => New - Old;
-        public int New   { get; set; }
+        public int New   { get; }
         public int Old   { get; }
     }
 }

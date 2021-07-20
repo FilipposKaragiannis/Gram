@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Gram.Rpg.Client.Core;
 using Gram.Rpg.Client.Core.Messaging;
 
@@ -11,12 +12,11 @@ namespace Gram.Rpg.Client.Presentation.Infrastructure
 
         private static bool AlreadySubscribed<T>(Action<T> subscriber, ICollection<Wrapper> actions)
         {
-            foreach (var wrapper in actions)
-                if (wrapper.Action.Equals(subscriber))
-                {
-                    G.LogWarning($"Trying to subscribe a handler twice to: {typeof(T).Name}. Subscription failed.");
-                    return true;
-                }
+            if (actions.Any(wrapper => wrapper.Action.Equals(subscriber)))
+            {
+                G.LogWarning($"Trying to subscribe a handler twice to: {typeof(T).Name}. Subscription failed.");
+                return true;
+            }
 
             return false;
         }
@@ -25,25 +25,17 @@ namespace Gram.Rpg.Client.Presentation.Infrastructure
         {
             var t = (T)e;
 
-            // The act of invoking could cause subscribers to be add/edremoved from our list.
-            // We ensure we don't invoke new subscribers by comparing their ID with our startingId.
-            // If their ID is >= the startingId then they were added during this invocation loop and
-            // we should ignore them.
-            // We also guard against many subscribers being removed during one invocation - in such 
-            // a scenario we can try to access beyond the bounds of the list and error. 
-
             var startingId = idCounter;
 
             for (var i = subscribers.Count - 1; i >= 0; i--)
                 if (i < subscribers.Count)
                 {
                     var wrapper = subscribers[i];
-                    if (wrapper.Id < startingId)
-                    {
-                        var action = (Action<T>)wrapper.Action;
+                    if (wrapper.Id >= startingId)
+                        continue;
+                    var action = (Action<T>)wrapper.Action;
 
-                        action.Invoke(t);
-                    }
+                    action.Invoke(t);
                 }
         }
 

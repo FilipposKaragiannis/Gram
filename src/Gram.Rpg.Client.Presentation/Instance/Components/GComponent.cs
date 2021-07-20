@@ -78,12 +78,4 @@ namespace Gram.Rpg.Client.Presentation.Instance.Components
             Destroy(this);
         }
     }
-    
-    public static class GComponentExtensions
-    {
-        public static bool StillExists(this IGComponent component)
-        {
-            return component != null && !component.IsDisposed;
-        }
-    }
 }

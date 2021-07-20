@@ -9,43 +9,12 @@ namespace Gram.Rpg.Client.Core.IOC
     {
         private static IResolver resolver;
 
-        public static void BeginScope(IDisposer owner, string name)
-        {
-            resolver.BeginScope(owner, name);
-        }
-
-        public static ContainerScope BeginScope(string name)
-        {
-            return resolver.BeginScope(name);
-        }
-
-        // [Obsolete("Not really obsolete, but flagging whilst we remove unnecessary uses of it. SL.Get should be used in rare cases, prefer DI instead.")]
         public static T Get<T>()
         {
             if (resolver == null)
                 throw new InvalidOperationException("Can not Get service [{0}]; Resolver is null. This can happen if the service you are getting makes a call to SL (or similar). You should review your service retrieval.".Fill(typeof(T).FullName));
 
             return resolver.Get<T>();
-        }
-
-        // [Obsolete("Not really obsolete, but flagging whilst we remove unnecessary uses of it. SL.Get should be used in rare cases, prefer DI instead.")]
-        public static bool TryGet<T>(out T service)
-        {
-            service = default;
-
-            if (resolver == null)
-                return false;
-            
-            return resolver.TryGet(out service);
-        }
-
-        // [Obsolete("Not really obsolete, but flagging whilst we remove unnecessary uses of it. SL.Get should be used in rare cases, prefer DI instead.")]
-        public static object Get(Type type)
-        {
-            if (resolver == null)
-                throw new InvalidOperationException("Can not Get service [{0}]; Resolver is null. This can happen if the service you are getting makes a call to SL (or similar). You should review your service retrieval.".Fill(type.FullName));
-
-            return resolver.Get(type);
         }
 
         public static void Initialise(IResolver resolver)
@@ -87,21 +56,6 @@ namespace Gram.Rpg.Client.Core.IOC
             }
 
             return instance;
-        }
-
-        public static void RegisterInstance<T>(T instance)
-        {
-            resolver.RegisterInstance(instance);
-        }
-
-        public static void RegisterScoped<T>(T instance)
-        {
-            resolver.RegisterScoped(instance);
-        }
-
-        public static void RegisterSingleton<T>(T instance)
-        {
-            resolver.RegisterSingleton(instance);
         }
 
         public static bool Initialised => resolver != null;

@@ -13,7 +13,6 @@ namespace Gram.Rpg.Client.Core.IOC
         IEnumerable<Registration> _Instances();
         IEnumerable<Registration> _Singletons();
         IEnumerable<Registration> _Scopeds();
-        object CreateInstance(Type t);
     }
 
 
@@ -83,9 +82,6 @@ namespace Gram.Rpg.Client.Core.IOC
             return null;
         }
 
-        
-
-        [PublicAPI]
         protected T Instantiate<T>()
         {
             var type = typeof(T);

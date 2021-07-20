@@ -15,7 +15,6 @@ namespace Gram.Rpg.Client.Presentation
         private Container  container;
         private Disposer   disposer;
         private IGameMode  gameMode;
-        private TimeSource globalTimeSource;
 
         [Injected] public IMessageBus MessageBus;
 
@@ -39,7 +38,7 @@ namespace Gram.Rpg.Client.Presentation
             }
 
             InitialiseSystems(new Logging(),
-                new Ioc(globalTimeSource, out container),
+                new Ioc(out container),
                 new UNITY(),
                 new GeneralTypes(),
                 new GUI());

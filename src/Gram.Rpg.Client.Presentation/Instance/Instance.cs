@@ -14,12 +14,11 @@ namespace Gram.Rpg.Client.Presentation.Instance
         void Enable();
     }
 
-    public class Instance : GBehaviour, ITimeSource, IInstance
+    public class Instance : GBehaviour, IInstance
     {
         private static readonly Event<float> update = new Event<float>("Instance.Update");
 
         protected IEvent<float> Update => update;
-
         
         protected override void DoDispose()
         {

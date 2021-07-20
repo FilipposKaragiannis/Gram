@@ -16,7 +16,6 @@ namespace Gram.Rpg.Client.Presentation.Input
     public class InputDispatcher : IInputDispatcher
     {
         private readonly IInput                            input;
-        private readonly IMessageBus                       messageBus;
         private readonly List<IInputDetector>              detectors;
         private readonly Dictionary<string,IInputDetector> detectorLookup;
         private readonly List<IInputReceiver>              receivers;
@@ -24,7 +23,6 @@ namespace Gram.Rpg.Client.Presentation.Input
         public InputDispatcher(IInput input, IMessageBus messageBus)
         {
             this.input      = input;
-            this.messageBus = messageBus;
 
             detectors      = new List<IInputDetector>();
             detectorLookup = new Dictionary<string, IInputDetector>();
@@ -60,8 +58,8 @@ namespace Gram.Rpg.Client.Presentation.Input
         {
             receivers.Remove(receiver);
         }
-        
-        public void RemoveDetector(string name)
+
+        private void RemoveDetector(string name)
         {
             var detector = GetDetector(name);
 

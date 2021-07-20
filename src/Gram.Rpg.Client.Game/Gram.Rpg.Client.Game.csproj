@@ -8,4 +8,8 @@
     <ProjectReference Include="..\Gram.Rpg.Client.Core\Gram.Rpg.Client.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Battle\States" />
+  </ItemGroup>
+
 </Project>
